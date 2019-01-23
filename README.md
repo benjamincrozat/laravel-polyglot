@@ -29,7 +29,7 @@ Register Laravel Polyglot **before** `RouteServiceProvider` in `config/app.php`:
 ]
 ```
 
-Then, go to `app/Providers/RouteServiceProvider.php` and the `prefix()` method in case you are using the `directories`driver:
+Then, go to `app/Providers/RouteServiceProvider.php` and the `prefix()` method in case you are using the `directories`driver. If you don't, the prefix will be emptu and won't have any effect.
 
 ```php
 protected function mapWebRoutes()
@@ -41,7 +41,7 @@ protected function mapWebRoutes()
 }
 ```
 
-Please note that Polyglot is a good Laravel citizen and can be access from the container in any way you want:
+Please note that Polyglot is a good Laravel citizen and can be accessed from the container in any way you want:
 
 ```php
 app('polyglot')->urlToLanguage('fr');

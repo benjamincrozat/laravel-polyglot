@@ -78,18 +78,11 @@ class Polyglot
     public function setLocaleFromDomain()
     {
         foreach (config('polyglot.domains') as $key => $value) {
-            if ($this->request->getHost() === $value && in_array($key, config('polyglot.languages'))) {
+            if ($this->request->getHost() === $value && in_array($key, $this->languages())) {
                 $this->app->setLocale($key);
 
                 break;
             }
-        }
-    }
-
-    public function setLocaleFromDirectory()
-    {
-        if ($this->isGuessedLanguageValid()) {
-            $this->app->setLocale($this->guessedLanguage());
         }
     }
 
@@ -100,6 +93,13 @@ class Polyglot
                 $this->urlTo($this->app->getLocale())
             );
         });
+    }
+
+    public function setLocaleFromDirectory()
+    {
+        if ($this->isGuessedLanguageValid()) {
+            $this->app->setLocale($this->guessedLanguage());
+        }
     }
 
     public function isDomainsStrategy()

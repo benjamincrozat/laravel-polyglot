@@ -8,10 +8,4 @@ abstract class TestCase extends Orchestra\Testbench\TestCase
             BC\Laravel\Polyglot\PolyglotServiceProvider::class,
         ];
     }
-
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('polyglot.driver', 'directories');
-        $app['config']->set('polyglot.languages', ['en', 'fr']);
-    }
 }

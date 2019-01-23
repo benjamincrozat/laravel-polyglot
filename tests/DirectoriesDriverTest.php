@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-class PolyglotTest extends TestCase
+class DirectoriesDriverTest extends TestCase
 {
     public function setUp()
     {
@@ -11,7 +11,7 @@ class PolyglotTest extends TestCase
         Route::prefix(polyglot()->prefix())
             ->group(function () {
                 Route::get('/login', function () {
-                    return 'Ok!';
+                    //
                 });
             });
     }
@@ -50,10 +50,16 @@ class PolyglotTest extends TestCase
     public function it_still_serves_non_prefixed_routes()
     {
         Route::get('/foo', function () {
-            return 'Ok!';
+            //
         });
 
         $this->get('/foo')
             ->assertStatus(200);
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('polyglot.driver', 'directories');
+        $app['config']->set('polyglot.languages', ['en', 'fr']);
     }
 }

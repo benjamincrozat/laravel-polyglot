@@ -26,7 +26,6 @@ class DomainsDriver implements DriverContract
     public function __construct(Application $app, Request $request, UrlGenerator $url)
     {
         $this->app        = $app;
-        $this->redirector = $redirector;
         $this->request    = $request;
         $this->url        = $url;
     }

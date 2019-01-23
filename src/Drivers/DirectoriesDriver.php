@@ -46,13 +46,13 @@ class DirectoriesDriver implements DriverContract
         $this->routes();
     }
 
-    public function urlToLanguage(string $language) : string
+    public function urlToLanguage(string $target) : string
     {
         $guessed_language = $this->guessedLanguage() ? '/' . $this->guessedLanguage() : '';
 
         return str_replace(
             $this->request->getHost() . $guessed_language,
-            $this->request->getHost() . '/' . $language,
+            $this->request->getHost() . '/' . $target,
             $this->url->full()
         );
     }

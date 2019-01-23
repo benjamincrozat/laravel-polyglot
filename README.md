@@ -5,7 +5,7 @@
 
 # Laravel Polyglot
 
-Multiple languages support on your Laravel application, made easy.
+Switch between multiple languages on your Laravel application, the easy way.
 
 ## Requirements
 
@@ -29,7 +29,7 @@ Register Laravel Polyglot **before** `RouteServiceProvider` in `config/app.php`:
 ]
 ```
 
-Then, go to `app/Providers/RouteServiceProvider.php` and the `prefix()` method in case you are using the `directories`driver. If you don't, the prefix will be emptu and won't have any effect.
+Then, go to `app/Providers/RouteServiceProvider.php` and add the `prefix()` method in case you are using the `directories` driver. If you're not, the prefix won't have any effect.
 
 ```php
 protected function mapWebRoutes()
@@ -39,16 +39,6 @@ protected function mapWebRoutes()
         ->namespace($this->namespace)
         ->group(base_path('routes/web.php'));
 }
-```
-
-Please note that Polyglot is a good Laravel citizen and can be accessed from the container in any way you want:
-
-```php
-app('polyglot')->urlToLanguage('fr');
-
-Polyglot::urlToLanguage('fr');
-
-polyglot()->urlToLanguage('fr');
 ```
 
 Now, take a look at `config/polyglot.php` and change it as you wish.

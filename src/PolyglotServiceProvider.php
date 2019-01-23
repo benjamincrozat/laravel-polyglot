@@ -8,6 +8,10 @@ class PolyglotServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
+        ], 'config');
+
         if (polyglot()->isDomainsStrategy()) {
             polyglot()->setLocaleFromDomain();
         } else {

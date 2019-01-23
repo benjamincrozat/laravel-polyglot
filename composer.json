@@ -1,0 +1,52 @@
+{
+    "name": "benjamincrozat/laravel-polyglot",
+    "description": "Multiple languages support on your Laravel application, made easy.",
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "Benjamin Crozat",
+            "email": "benjamincrozat@me.com"
+        }
+    ],
+    "keywords": [
+        "i18n",
+        "laravel",
+        "multilingual",
+        "polyglot"
+    ],
+    "require": {
+        "php": ">=7.1",
+        "illuminate/support": "^5.5"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.7",
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "BC\\Laravel\\Polyglot\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "Polyglot": "BC\\Laravel\\Polyglot\\Facades\\Polyglot"
+            }
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

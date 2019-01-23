@@ -20,6 +20,39 @@ composer require benjamincrozat/laravel-polyglot
 
 ## Usage
 
+Register Laravel Polyglot **before** `RouteServiceProvider` in `config/app.php`:
+
+```php
+'providers' => [
+    BC\Laravel\Polyglot\PolyglotServiceProvider::class,
+    App\Providers\RouteServiceProvider::class,
+]
+```
+
+Then, go to `app/Providers/RouteServiceProvider.php` and the `prefix()` method in case you are using the `directories`driver:
+
+```php
+protected function mapWebRoutes()
+{
+    Route::prefix(polyglot()->prefix())
+        ->middleware('web')
+        ->namespace($this->namespace)
+        ->group(base_path('routes/web.php'));
+}
+```
+
+Please note that Polyglot is a good Laravel citizen and can be access from the container in any way you want:
+
+```php
+app('polyglot')->urlToLanguage('fr');
+
+Polyglot::urlToLanguage('fr');
+
+polyglot()->urlToLanguage('fr');
+```
+
+Now, take a look at `config/polyglot.php` and change it as you wish.
+
 ## License
 
 [WTFPL](http://www.wtfpl.net/about/)

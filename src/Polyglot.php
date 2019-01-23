@@ -124,6 +124,6 @@ class Polyglot
 
     public function languages()
     {
-        return $this->app['config']->get('polyglot.languages');
+        return $this->app['config']->get('polyglot.languages') ?? [];
     }
 }

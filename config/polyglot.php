@@ -19,8 +19,7 @@ return [
     | Supported Languages
     |--------------------------------------------------------------------------
     |
-    | This parameter is useful when using the `directories` driver, since
-    | it prevents users to display unsupported or imcomplete languages.
+    | This parameter prevents users to display unsupported languages.
     |
     */
     'languages' => ['en'],

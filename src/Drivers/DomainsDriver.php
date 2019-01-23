@@ -31,7 +31,7 @@ class DomainsDriver implements DriverContract
         $this->url        = $url;
     }
 
-    public function switch(string $language) : string
+    public function urlToLanguage(string $language) : string
     {
         return str_replace(
             $this->request->getHost(),

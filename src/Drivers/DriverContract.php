@@ -4,7 +4,7 @@ namespace BC\Laravel\Polyglot\Drivers;
 
 interface DriverContract
 {
-    public function switch(string $language) : string;
+    public function urlToLanguage(string $language) : string;
 
     public function prefix() : string;
 

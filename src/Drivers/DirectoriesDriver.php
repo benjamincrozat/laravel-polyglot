@@ -46,7 +46,7 @@ class DirectoriesDriver implements DriverContract
         $this->routes();
     }
 
-    public function switch(string $language) : string
+    public function urlToLanguage(string $language) : string
     {
         $guessed_language = $this->guessedLanguage() ? '/' . $this->guessedLanguage() : '';
 
@@ -73,7 +73,7 @@ class DirectoriesDriver implements DriverContract
     {
         $this->router->get('/', function () {
             return $this->redirector->to(
-                $this->switch($this->app->getLocale())
+                $this->urlToLanguage($this->app->getLocale())
             );
         });
     }

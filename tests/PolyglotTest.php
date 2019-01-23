@@ -43,7 +43,7 @@ class PolyglotTest extends TestCase
         $this->get('/en/login')
             ->assertStatus(200);
 
-        $this->assertEquals(config('app.url') . '/fr/login', polyglot()->switch('fr'));
+        $this->assertEquals(config('app.url') . '/fr/login', polyglot()->urlToLanguage('fr'));
     }
 
     /** @test */

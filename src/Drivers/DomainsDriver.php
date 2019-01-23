@@ -64,4 +64,9 @@ class DomainsDriver implements DriverContract
     {
         return $this->app['config']->get('polyglot.domains');
     }
+
+    protected function languages()
+    {
+        return $this->app['config']->get('polyglot.languages');
+    }
 }

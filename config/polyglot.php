@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'strategy' => 'directories',
+    'driver' => 'directories',
 
     'languages' => ['en'],
 

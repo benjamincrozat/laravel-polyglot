@@ -11,7 +11,7 @@ abstract class TestCase extends Orchestra\Testbench\TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('polyglot.strategy', 'directories');
+        $app['config']->set('polyglot.driver', 'directories');
         $app['config']->set('polyglot.languages', ['en', 'fr']);
     }
 }

@@ -5,6 +5,7 @@ namespace BC\Laravel\Polyglot\Drivers;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Foundation\Application;
+use BC\Laravel\Polyglot\Presenters\PresenterContract;
 
 class DomainsDriver extends BaseDriver implements DriverContract
 {

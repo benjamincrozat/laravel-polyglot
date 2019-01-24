@@ -17,7 +17,7 @@ abstract class BaseDriver implements DriverContract
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function prefix() : string
     {
@@ -25,7 +25,7 @@ abstract class BaseDriver implements DriverContract
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function presenter() : PresenterContract
     {

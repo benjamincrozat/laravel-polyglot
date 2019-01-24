@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\URL;
 class DirectoriesPresenter implements PresenterContract
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function routeTo(string $to, $arguments) : string
     {
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function switchTo(string $to) : string
     {
@@ -26,7 +26,7 @@ class DirectoriesPresenter implements PresenterContract
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function urlTo(string $to, $arguments) : string
     {

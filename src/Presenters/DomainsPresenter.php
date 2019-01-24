@@ -11,7 +11,7 @@ class DomainsPresenter implements PresenterContract
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function switchTo(string $to) : string
     {

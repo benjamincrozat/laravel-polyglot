@@ -16,11 +16,9 @@ abstract class BaseDriver implements DriverContract
         $this->presenter = $presenter;
     }
 
-    public function __call($name, $arguments)
+    public function prefix() : string
     {
-        if (method_exists($this->presenter(), $name)) {
-            return $this->presenter()->{$name}(...$arguments);
-        }
+        return '';
     }
 
     public function presenter() : PresenterContract

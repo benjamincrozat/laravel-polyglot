@@ -26,11 +26,6 @@ class DomainsDriver extends BaseDriver implements DriverContract
         $this->request    = $request;
     }
 
-    public function prefix() : string
-    {
-        return '';
-    }
-
     public function setLocale() : void
     {
         foreach ($this->app['config']->get('polyglot.domains') as $language => $domain) {

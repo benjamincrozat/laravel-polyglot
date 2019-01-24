@@ -59,7 +59,7 @@ class DirectoriesDriver extends BaseDriver implements DriverContract
     {
         $this->router->get('/', function () {
             return $this->redirector->to(
-                $this->switchTo($this->app->getLocale())
+                $this->presenter()->switchTo($this->app->getLocale())
             );
         });
     }

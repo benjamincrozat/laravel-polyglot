@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Foundation\Application;
 
-class DomainsDriver implements DriverContract
+class DomainsDriver extends BaseDriver implements DriverContract
 {
     /**
      * @var Application
@@ -23,20 +23,13 @@ class DomainsDriver implements DriverContract
      */
     protected $url;
 
-    public function __construct(Application $app, Request $request, UrlGenerator $url)
+    public function __construct(Application $app, Request $request, UrlGenerator $url, PresenterContract $presenter)
     {
+        parent::__construct($presenter);
+
         $this->app        = $app;
         $this->request    = $request;
         $this->url        = $url;
-    }
-
-    public function urlToLanguage(string $language) : string
-    {
-        return str_replace(
-            $this->request->getHost(),
-            $this->domainForLanguage($language),
-            $this->url->full()
-        );
     }
 
     public function prefix() : string
@@ -53,11 +46,6 @@ class DomainsDriver implements DriverContract
                 break;
             }
         }
-    }
-
-    protected function domainForLanguage($language)
-    {
-        return $this->domains()[$language];
     }
 
     protected function domains()

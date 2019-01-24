@@ -43,7 +43,7 @@ class DirectoriesDriverTest extends TestCase
         $this->get('/en/login')
             ->assertStatus(200);
 
-        $this->assertEquals(config('app.url') . '/fr/login', polyglot()->urlToLanguage('fr'));
+        $this->assertEquals(config('app.url') . '/fr/login', polyglot()->switchTo('fr'));
     }
 
     /** @test */

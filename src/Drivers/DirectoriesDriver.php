@@ -7,8 +7,9 @@ use Illuminate\Routing\Router;
 use Illuminate\Routing\Redirector;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Foundation\Application;
+use BC\Laravel\Polyglot\Presenters\PresenterContract;
 
-class DirectoriesDriver implements DriverContract
+class DirectoriesDriver extends BaseDriver implements DriverContract
 {
     /**
      * @var Application
@@ -35,8 +36,10 @@ class DirectoriesDriver implements DriverContract
      */
     protected $url;
 
-    public function __construct(Application $app, Router $router, Redirector $redirector, Request $request, UrlGenerator $url)
+    public function __construct(Application $app, Router $router, Redirector $redirector, Request $request, UrlGenerator $url, PresenterContract $presenter)
     {
+        parent::__construct($presenter);
+
         $this->app        = $app;
         $this->router     = $router;
         $this->redirector = $redirector;
@@ -46,17 +49,6 @@ class DirectoriesDriver implements DriverContract
         $this->routes();
     }
 
-    public function urlToLanguage(string $target) : string
-    {
-        $guessed_language = $this->guessedLanguage() ? '/' . $this->guessedLanguage() : '';
-
-        return str_replace(
-            $this->request->getHost() . $guessed_language,
-            $this->request->getHost() . '/' . $target,
-            $this->url->full()
-        );
-    }
-
     public function prefix() : string
     {
         return $this->app->getLocale();
@@ -64,8 +56,8 @@ class DirectoriesDriver implements DriverContract
 
     public function setLocale() : void
     {
-        if ($this->isGuessedLanguageValid()) {
-            $this->app->setLocale($this->guessedLanguage());
+        if ($this->isCurrentValid()) {
+            $this->app->setLocale($this->current());
         }
     }
 
@@ -78,12 +70,12 @@ class DirectoriesDriver implements DriverContract
         });
     }
 
-    protected function isGuessedLanguageValid()
+    protected function isCurrentValid()
     {
-        return in_array($this->guessedLanguage(), $this->languages());
+        return in_array($this->current(), $this->languages());
     }
 
-    protected function guessedLanguage()
+    protected function current()
     {
         return $this->request->segments()[0] ?? null;
     }

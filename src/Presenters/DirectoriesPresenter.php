@@ -9,13 +9,6 @@ class DirectoriesPresenter implements PresenterContract
     /**
      * {@inheritdoc}
      */
-    public function routeTo(string $to, $arguments) : string
-    {
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function switchTo(string $to) : string
     {
         return str_replace(
@@ -23,13 +16,6 @@ class DirectoriesPresenter implements PresenterContract
             request()->getHost() . '/' . $to,
             URL::full()
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function urlTo(string $to, $arguments) : string
-    {
     }
 
     protected function current()

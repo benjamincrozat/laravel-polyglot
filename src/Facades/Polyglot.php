@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static setLocale()
  * @method static \BC\Laravel\Polyglot\Presenters\PresenterContract presenter()
  * @method static string switchTo(string $language)
+ * @method static string driver()
  */
 class Polyglot extends Facade
 {

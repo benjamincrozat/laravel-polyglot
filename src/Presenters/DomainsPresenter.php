@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\URL;
 
 class DomainsPresenter implements PresenterContract
 {
-    public function routeTo(string $to, $arguments) : string
-    {
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -20,9 +16,5 @@ class DomainsPresenter implements PresenterContract
             config('polyglot.domains')[$to],
             URL::full()
         );
-    }
-
-    public function urlTo(string $to, $arguments) : string
-    {
     }
 }

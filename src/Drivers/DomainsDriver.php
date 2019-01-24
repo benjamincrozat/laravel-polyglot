@@ -22,8 +22,8 @@ class DomainsDriver extends BaseDriver implements DriverContract
     {
         parent::__construct($presenter);
 
-        $this->app        = $app;
-        $this->request    = $request;
+        $this->app     = $app;
+        $this->request = $request;
     }
 
     public function setLocale() : void

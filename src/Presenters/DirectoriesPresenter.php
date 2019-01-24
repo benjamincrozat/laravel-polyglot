@@ -2,46 +2,38 @@
 
 namespace BC\Laravel\Polyglot\Presenters;
 
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Support\Facades\URL;
 
 class DirectoriesPresenter implements PresenterContract
 {
     /**
-     * @var Request
+     * {@inheritDoc}
      */
-    protected $request;
-
-    /**
-     * @var UrlGenerator
-     */
-    protected $url;
-
-    public function __construct(Request $request, UrlGenerator $url)
-    {
-        $this->request    = $request;
-        $this->url        = $url;
-    }
-
     public function routeTo(string $to, $arguments) : string
     {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function switchTo(string $to) : string
     {
         return str_replace(
-            $this->request->getHost() . ($this->current() ? '/' . $this->current() : ''),
-            $this->request->getHost() . '/' . $to,
-            $this->url->full()
+            request()->getHost() . ($this->current() ? '/' . $this->current() : ''),
+            request()->getHost() . '/' . $to,
+            URL::full()
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function urlTo(string $to, $arguments) : string
     {
     }
 
     protected function current()
     {
-        return $this->request->segments()[0] ?? null;
+        return request()->segments()[0] ?? null;
     }
 }

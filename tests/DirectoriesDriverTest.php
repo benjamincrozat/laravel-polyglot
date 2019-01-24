@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use BC\Laravel\Polyglot\Facades\Polyglot;
 
 class DirectoriesDriverTest extends TestCase
 {

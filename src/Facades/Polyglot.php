@@ -1,12 +1,12 @@
 <?php
 
-namespace BC\Laravel\Settings\Facades;
+namespace BC\Laravel\Polyglot\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static string prefix()
- * @method static void setLocale()
+ * @method static setLocale()
  * @method static \BC\Laravel\Polyglot\Presenters\PresenterContract presenter()
  * @method static string switchTo(string $language)
  */

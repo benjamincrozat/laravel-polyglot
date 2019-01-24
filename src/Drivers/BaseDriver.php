@@ -16,11 +16,17 @@ abstract class BaseDriver implements DriverContract
         $this->presenter = $presenter;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function prefix() : string
     {
         return '';
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function presenter() : PresenterContract
     {
         return $this->presenter;

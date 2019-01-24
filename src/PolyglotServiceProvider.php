@@ -18,7 +18,7 @@ class PolyglotServiceProvider extends ServiceProvider
             __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
         ], 'config');
 
-        app(DriverContract::class)->setLocale();
+        polyglot()->setLocale();
     }
 
     public function register()

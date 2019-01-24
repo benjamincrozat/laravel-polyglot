@@ -4,6 +4,12 @@ namespace BC\Laravel\Polyglot;
 
 use BC\Laravel\Polyglot\Drivers\DriverContract;
 
+/**
+ * @method static string prefix()
+ * @method static setLocale()
+ * @method static Presenters\PresenterContract presenter()
+ * @method static string switchTo(string $language)
+ */
 class Polyglot
 {
     /**

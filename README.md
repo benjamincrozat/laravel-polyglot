@@ -49,7 +49,7 @@ This package should work seamlessly once it's correctly configured (assuming you
 <ul>
     @foreach (config('polyglot.languages') as $language)
         <li>
-            <a href="{{ polyglot()->urlToLanguage($language) }}">
+            <a href="{{ polyglot()->switchTo($language) }}">
                 {{ $language }}
             </a>
         </li>
@@ -57,16 +57,16 @@ This package should work seamlessly once it's correctly configured (assuming you
 </ul>
 ```
 
-The `urlToLanguage()` method switches the *current URL* to another language. You won"t have to go back to the home page.
+The `switchTo()` method switches the *current URL* to another language. You won"t have to go back to the home page.
 
 Note that Laravel Polyglot can be accessed in various way:
 
 ```php
-app('polyglot')->urlToLanguage('fr');
+app('polyglot')->switchTo('fr');
 
-Polyglot::urlToLanguage('fr');
+Polyglot::switchTo('fr');
 
-polyglot()->urlToLanguage('fr');
+polyglot()->switchTo('fr');
 ```
 
 ## License

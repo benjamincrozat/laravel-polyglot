@@ -31,11 +31,6 @@ class DirectoriesDriver extends BaseDriver implements DriverContract
      */
     protected $request;
 
-    /**
-     * @var UrlGenerator
-     */
-    protected $url;
-
     public function __construct(Application $app, Router $router, Redirector $redirector, Request $request, UrlGenerator $url, PresenterContract $presenter)
     {
         parent::__construct($presenter);
@@ -44,7 +39,6 @@ class DirectoriesDriver extends BaseDriver implements DriverContract
         $this->router     = $router;
         $this->redirector = $redirector;
         $this->request    = $request;
-        $this->url        = $url;
 
         $this->routes();
     }
@@ -56,7 +50,7 @@ class DirectoriesDriver extends BaseDriver implements DriverContract
 
     public function setLocale() : void
     {
-        if ($this->isCurrentValid()) {
+        if (in_array($this->current(), $this->app['config']->get('polyglot.languages'))) {
             $this->app->setLocale($this->current());
         }
     }
@@ -65,23 +59,13 @@ class DirectoriesDriver extends BaseDriver implements DriverContract
     {
         $this->router->get('/', function () {
             return $this->redirector->to(
-                $this->urlToLanguage($this->app->getLocale())
+                $this->switchTo($this->app->getLocale())
             );
         });
-    }
-
-    protected function isCurrentValid()
-    {
-        return in_array($this->current(), $this->languages());
     }
 
     protected function current()
     {
         return $this->request->segments()[0] ?? null;
-    }
-
-    protected function languages()
-    {
-        return $this->app['config']->get('polyglot.languages');
     }
 }

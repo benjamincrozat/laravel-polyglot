@@ -18,8 +18,12 @@ class Polyglot
 
     public function __call($name, $arguments)
     {
-        if (method_exists($this->driver, $name)) {
-            return $this->driver->{$name}(...$arguments);
+        if (method_exists($this->driver(), $name)) {
+            return $this->driver()->{$name}(...$arguments);
+        }
+
+        if (method_exists($this->driver()->presenter(), $name)) {
+            return $this->driver()->presenter()->{$name}(...$arguments);
         }
     }
 

@@ -3,7 +3,6 @@
 namespace BC\Laravel\Polyglot\Drivers;
 
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Foundation\Application;
 use BC\Laravel\Polyglot\Presenters\PresenterContract;
 
@@ -19,18 +18,12 @@ class DomainsDriver extends BaseDriver implements DriverContract
      */
     protected $request;
 
-    /**
-     * @var UrlGenerator
-     */
-    protected $url;
-
-    public function __construct(Application $app, Request $request, UrlGenerator $url, PresenterContract $presenter)
+    public function __construct(Application $app, Request $request, PresenterContract $presenter)
     {
         parent::__construct($presenter);
 
         $this->app        = $app;
         $this->request    = $request;
-        $this->url        = $url;
     }
 
     public function prefix() : string
@@ -40,22 +33,12 @@ class DomainsDriver extends BaseDriver implements DriverContract
 
     public function setLocale() : void
     {
-        foreach ($this->domains() as $language => $domain) {
-            if ($this->request->getHost() === $domain && in_array($language, $this->languages())) {
+        foreach ($this->app['config']->get('polyglot.domains') as $language => $domain) {
+            if ($this->request->getHost() === $domain && in_array($language, $this->app['config']->get('polyglot.languages'))) {
                 $this->app->setLocale($language);
 
                 break;
             }
         }
-    }
-
-    protected function domains()
-    {
-        return $this->app['config']->get('polyglot.domains');
-    }
-
-    protected function languages()
-    {
-        return $this->app['config']->get('polyglot.languages');
     }
 }

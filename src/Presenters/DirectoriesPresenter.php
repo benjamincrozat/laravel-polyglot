@@ -2,8 +2,27 @@
 
 namespace BC\Laravel\Polyglot\Presenters;
 
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Routing\UrlGenerator;
+
 class DirectoriesPresenter implements PresenterContract
 {
+    /**
+     * @var Request
+     */
+    protected $request;
+
+    /**
+     * @var UrlGenerator
+     */
+    protected $url;
+
+    public function __construct(Request $request, UrlGenerator $url)
+    {
+        $this->request    = $request;
+        $this->url        = $url;
+    }
+
     public function routeTo(string $to, $arguments) : string
     {
     }
@@ -11,7 +30,7 @@ class DirectoriesPresenter implements PresenterContract
     public function switchTo(string $to) : string
     {
         return str_replace(
-            $this->request->getHost() . (! $this->current() ?: '/' . $this->current()),
+            $this->request->getHost() . ($this->current() ? '/' . $this->current() : ''),
             $this->request->getHost() . '/' . $to,
             $this->url->full()
         );

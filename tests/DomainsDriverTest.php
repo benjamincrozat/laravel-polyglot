@@ -18,6 +18,12 @@ class DomainsDriverTest extends TestCase
         });
     }
 
+    /** @test */
+    public function it_works()
+    {
+        $this->assertTrue(true);
+    }
+
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('polyglot.driver', 'domains');

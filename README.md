@@ -18,9 +18,7 @@ Switch between multiple languages on your Laravel application, the easy way.
 composer require benjamincrozat/laravel-polyglot
 ```
 
-## Usage
-
-Register Laravel Polyglot **before** `RouteServiceProvider` in `config/app.php`:
+Once it's done, register Laravel Polyglot **before** `RouteServiceProvider` in `config/app.php`:
 
 ```php
 'providers' => [
@@ -42,6 +40,32 @@ protected function mapWebRoutes()
 ```
 
 Now, take a look at `config/polyglot.php` and change it as you wish.
+
+## Usage
+
+This package should work seamlessly once it's correctly configured (assuming you have a "proper" Laravel project). The only thing you have to think about is to make a language menu. Here's how it can be done:
+
+```php
+<ul>
+    @foreach (config('polyglot.languages') as $language)
+        <li>
+            <a href="{{ polyglot()->urlToLanguage($language) }}">
+                {{ $language }}
+            </a>
+        </li>
+    @endforeach
+</ul>
+```
+
+Note that Laravel Polyglot can be accessed in various way:
+
+```php
+app('polyglot')->urlToLanguage('fr');
+
+Polyglot::urlToLanguage('fr');
+
+polyglot()->urlToLanguage('fr');
+```
 
 ## License
 

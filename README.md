@@ -57,6 +57,8 @@ This package should work seamlessly once it's correctly configured (assuming you
 </ul>
 ```
 
+The `urlToLanguage()` method switches the *current URL* to another language. You won"t have to go back to the home page.
+
 Note that Laravel Polyglot can be accessed in various way:
 
 ```php

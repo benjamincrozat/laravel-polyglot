@@ -18,6 +18,8 @@ class PolyglotServiceProvider extends ServiceProvider
             __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
         ], 'config');
 
+        $this->loadViewsFrom(__DIR__ . '../resources/views', 'polyglot');
+
         polyglot()->setLocale();
     }
 

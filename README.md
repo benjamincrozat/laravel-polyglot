@@ -47,31 +47,21 @@ Now, take a look at `config/polyglot.php` and change it as you wish.
 
 ## Usage
 
-This package should work seamlessly once it's correctly configured (assuming you have a "proper" Laravel project). The only thing you have to think about is to make a language menu. Here's how it can be done:
+Once you configured Laravel Polyglot, there are views that are here to help on the SEO and the language switcher:
 
 ```php
-<ul>
-    @foreach (config('polyglot.languages') as $language)
-        <li>
-            <a href="{{ polyglot()->switchTo($language) }}">
-                {{ $language }}
-            </a>
-        </li>
-    @endforeach
-</ul>
+<!DOCTYPE html>
+<html>
+    <head>
+        @include('polyglot::meta')
+    </head>
+    <body>
+        @include('polyglot::switcher')
+    </body>
+</html>
 ```
 
-The `switchTo()` method switches the *current URL* to another language. You won"t have to go back to the home page.
-
-Note that Laravel Polyglot can be accessed in various way:
-
-```php
-app('polyglot')->switchTo('fr');
-
-Polyglot::switchTo('fr');
-
-polyglot()->switchTo('fr');
-```
+Obviously, you are free to not use them and make your own!
 
 ## License
 

@@ -18,10 +18,6 @@
         "php": ">=7.1",
         "illuminate/support": "^5.1"
     },
-    "require-dev": {
-        "orchestra/testbench": "^3.1",
-        "phpunit/phpunit": "^5.0|^6.0|^7.0"
-    },
     "autoload": {
         "files": [
             "src/helpers.php"
@@ -29,11 +25,6 @@
         "psr-4": {
             "BC\\Laravel\\Polyglot\\": "src"
         }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests"
-        ]
     },
     "extra": {
         "laravel": {

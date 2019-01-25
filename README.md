@@ -14,7 +14,7 @@ Switch between multiple languages on your Laravel application, the easy way.
 
 ## Notes
 
-This package assume that you want every language to behave like a separate website. There is no guessing, Laravel Polyglot won't do automatic switch to the user's language. From an SEO point of view, that's the recommanded way to handle multiple languages, because Google and others will be able to visit and index every language (see [apple.com](https://www.apple.com), [amazon.com](https://www.amazon.com), [google.com](https://www.google.com), etc). More on the topic here: https://support.google.com/webmasters/answer/182192
+This package assume that you want every language to behave like a separate website. There is no guessing, Laravel Polyglot won't do automatic switch to the user's language. From an SEO point of view, that's the recommanded way to handle multiple languages, because Google and others will be able to visit and index every language (see [amazon.com](https://www.amazon.com), [apple.com](https://www.apple.com), [google.com](https://www.google.com), etc). More on the topic here: https://support.google.com/webmasters/answer/182192
 
 ## Installation
 

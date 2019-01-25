@@ -16,9 +16,13 @@ class PolyglotServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
-        ], 'config');
+        ], 'polyglot-config');
 
-        $this->loadViewsFrom(__DIR__ . '../resources/views', 'polyglot');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'polyglot');
+
+        $this->publishes([
+            __DIR__ . '../resources/views' => resource_path('views/vendor/polyglot'),
+        ], 'polyglot-views');
 
         polyglot()->setLocale();
     }

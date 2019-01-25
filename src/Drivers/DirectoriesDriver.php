@@ -21,7 +21,7 @@ class DirectoriesDriver extends BaseDriver implements DriverContract
 
     public function setLocale() : void
     {
-        if (in_array($this->current(), config('polyglot.languages'))) {
+        if (in_array($this->current(), config('polyglot.languages') ?? [])) {
             app()->setLocale($this->current());
         }
     }

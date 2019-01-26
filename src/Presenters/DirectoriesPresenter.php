@@ -11,12 +11,13 @@ class DirectoriesPresenter implements PresenterContract
      */
     public function switchTo(string $to) : string
     {
-        $port    = request()->getPort();
-        $current = $this->current();
+        $host    = request()->getHost();
+        $port    = ! str_contains($_SERVER['HTTP_HOST'], ':') ?: ':' . request()->getPort();
+        $current = $this->current() ? '/' . $this->current() : '';
 
         return str_replace(
-            request()->getHost() . ($port ? ':' . $port : '') . ($current ? '/' . $current : ''),
-            request()->getHost() . ($port ? ':' . $port : '') . '/' . $to,
+            $host . ($port ?? '') . $current,
+            $host . ($port ?? '') . '/' . $to,
             URL::full()
         );
     }

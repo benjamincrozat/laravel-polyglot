@@ -12,7 +12,7 @@ class DomainsDriver extends BaseDriver implements DriverContract
         parent::__construct($presenter);
     }
 
-    public function setLocale() : void
+    public function setLocale()
     {
         foreach (config('polyglot.domains') as $language => $domain) {
             if (request()->getHost() === $domain && in_array($language, config('polyglot.languages'))) {

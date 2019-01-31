@@ -10,7 +10,7 @@ Switch between multiple languages on your Laravel application, the easy way. **K
 ## Requirements
 
 - PHP 7.1+
-- Laravel 5.5+
+- Laravel 5.7+
 
 ## Notes
 

@@ -8,7 +8,7 @@ interface DriverContract
 {
     public function prefix() : string;
 
-    public function setLocale() : void;
+    public function setLocale();
 
     public function presenter() : PresenterContract;
 }

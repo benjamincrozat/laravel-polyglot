@@ -1,11 +1,12 @@
-[![Build Status](https://travis-ci.org/benjamincrozat/laravel-polyglot-tests.svg?branch=master)](https://travis-ci.org/benjamincrozat/laravel-polyglot-tests)
 [![Latest Stable Version](https://poser.pugx.org/benjamincrozat/laravel-polyglot/v/stable)](https://packagist.org/packages/benjamincrozat/laravel-polyglot)
 [![License](https://poser.pugx.org/benjamincrozat/laravel-polyglot/license)](https://packagist.org/packages/benjamincrozat/laravel-polyglot)
 [![Total Downloads](https://poser.pugx.org/benjamincrozat/laravel-polyglot/downloads)](https://packagist.org/packages/benjamincrozat/laravel-polyglot)
 
 # Laravel Polyglot
 
-Switch between multiple languages on your Laravel application, the easy way. **Keep in mind that it's still not ready for production.**
+**Not ready for production!**
+
+Switch between multiple languages on your Laravel application, the easy way.
 
 ## Requirements
 
@@ -13,8 +14,6 @@ Switch between multiple languages on your Laravel application, the easy way. **K
 - Laravel 5.7+
 
 ## Notes
-
-**The tests are in a [separate repository](https://github.com/benjamincrozat/laravel-polyglot-tests).**
 
 This package assume that you want every language to behave like a separate website. There is no guessing, Laravel Polyglot won't do automatic switch to the user's language. From an SEO point of view, that's the recommanded way, because Google and others will be able to visit and index every one of them (see [amazon.com](https://www.amazon.com), [apple.com](https://www.apple.com), [google.com](https://www.google.com), etc). More on the topic here: https://support.google.com/webmasters/answer/182192
 
@@ -64,6 +63,10 @@ Once you configured Laravel Polyglot, there are views that are here to help on t
 ```
 
 Obviously, you are free to not use them and make your own!
+
+## ToDo
+
+- [ ] Make [the tests](https://github.com/benjamincrozat/laravel-polyglot-tests) pass on Travis CI
 
 ## License
 

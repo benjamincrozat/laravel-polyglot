@@ -10,4 +10,6 @@ interface DriverContract
     public function prefix();
 
     public function setLocale();
+
+    public function switchTo($language);
 }

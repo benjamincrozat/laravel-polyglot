@@ -29,6 +29,14 @@ class QueryStringDriver implements DriverContract
      */
     public function setLocale()
     {
-        app()->setLocale($this->request->language);
+        app()->setLocale($this->request->language ?? config('app.locale'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function switchTo($language)
+    {
+        return $this->request->fullUrlWithQuery(compact('language'));
     }
 }

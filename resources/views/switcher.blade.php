@@ -5,7 +5,7 @@
                 <li class="polyglot-item">
                     <a rel="alternate"
                        hreflang="{{ $language }}"
-                       href="{{ request()->fullUrlWithQuery(['language' => 'fr']) }}"
+                       href="{{ Polyglot::switchTo($language) }}"
                        class="polyglot-link"
                     >
                         @lang($language)

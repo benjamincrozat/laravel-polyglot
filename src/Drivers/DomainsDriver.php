@@ -40,4 +40,12 @@ class DomainsDriver extends BaseDriver implements DriverContract
             }
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function switchTo($language)
+    {
+        return str_replace($this->request->getHost(), config("polyglot.domains.$language"), $this->request->fullUrl());
+    }
 }

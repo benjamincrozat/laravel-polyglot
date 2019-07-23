@@ -32,7 +32,7 @@ class DirectoriesDriver implements DriverContract
      */
     public function setLocale()
     {
-        $language_directory = $this->request->segments()[0];
+        $language_directory = $this->request->segments()[0] ?? null;
         $valid_languages    = config('polyglot.languages');
 
         if (in_array($language_directory, $valid_languages)) {
@@ -41,13 +41,29 @@ class DirectoriesDriver implements DriverContract
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function switchTo($language)
+    {
+        if ($directory = $this->request->segments()[0] ?? '') {
+            return preg_replace("/\/$directory/", "/$language", $this->request->fullUrl());
+        }
+
+        if ($this->request->getQueryString()) {
+            return "/$language{$this->request->path()}?{$this->request->getQueryString()}";
+        }
+
+        return "/$language{$this->request->path()}";
+    }
+
+    /**
      * This method registers the "/" route. Because this driver is based
      * on directories, users should never be able to display "/".
      */
     protected function secureRootRoute()
     {
-        Route::redirect('/', $this->request->fullUrlWithQuery([
-            'language' => app()->getLocale(),
-        ]));
+        Route::get('/', function () {
+            return redirect($this->switchTo(config('app.locale')));
+        });
     }
 }

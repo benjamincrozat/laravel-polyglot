@@ -4,16 +4,13 @@ namespace BC\Laravel\Polyglot\Drivers;
 
 use Illuminate\Http\Request;
 
-class DomainsDriver extends BaseDriver implements DriverContract
+class QueryStringDriver implements DriverContract
 {
     /**
      * @var Request
      */
     protected $request;
 
-    /**
-     * @param Request $request
-     */
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -32,12 +29,6 @@ class DomainsDriver extends BaseDriver implements DriverContract
      */
     public function setLocale()
     {
-        foreach (config('polyglot.domains') as $language => $domain) {
-            if ($this->request->getHost() === $domain && in_array($language, config('polyglot.languages'))) {
-                app()->setLocale($language);
-
-                break;
-            }
-        }
+        app()->setLocale($this->request->language);
     }
 }

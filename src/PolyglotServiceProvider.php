@@ -6,9 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use BC\Laravel\Polyglot\Drivers\DomainsDriver;
 use BC\Laravel\Polyglot\Drivers\DriverContract;
 use BC\Laravel\Polyglot\Drivers\DirectoriesDriver;
-use BC\Laravel\Polyglot\Presenters\DomainsPresenter;
-use BC\Laravel\Polyglot\Presenters\PresenterContract;
-use BC\Laravel\Polyglot\Presenters\DirectoriesPresenter;
+use BC\Laravel\Polyglot\Drivers\QueryStringDriver;
 
 class PolyglotServiceProvider extends ServiceProvider
 {
@@ -16,13 +14,13 @@ class PolyglotServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
-        ], 'polyglot-config');
+        ], 'config');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'polyglot');
 
         $this->publishes([
-            __DIR__ . '../resources/views' => resource_path('views/vendor/polyglot'),
-        ], 'polyglot-views');
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/polyglot'),
+        ], 'views');
 
         polyglot()->setLocale();
     }
@@ -31,10 +29,10 @@ class PolyglotServiceProvider extends ServiceProvider
     {
         if ('domains' === app('config')->get('polyglot.driver')) {
             app()->bind(DriverContract::class, DomainsDriver::class);
-            app()->bind(PresenterContract::class, DomainsPresenter::class);
-        } else {
+        } elseif ('directories' === app('config')->get('polyglot.driver')) {
             app()->bind(DriverContract::class, DirectoriesDriver::class);
-            app()->bind(PresenterContract::class, DirectoriesPresenter::class);
+        } elseif ('query_string' === app('config')->get('polyglot.driver')) {
+            app()->bind(DriverContract::class, QueryStringDriver::class);
         }
 
         app()->bind('polyglot', Polyglot::class);

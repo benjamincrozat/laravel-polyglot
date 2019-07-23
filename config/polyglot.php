@@ -9,10 +9,10 @@ return [
     | The technique used to differenciate and switch languages is
     | defined by a driver. Choose the one that fits your needs.
     |
-    | Supported: "directories", "domains"
+    | Supported: "query_string", directories", "domains"
     |
     */
-    'driver' => 'directories',
+    'driver' => 'query_string',
 
     /*
     |--------------------------------------------------------------------------

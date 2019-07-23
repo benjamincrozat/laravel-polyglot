@@ -1,12 +1,12 @@
 <?php
 
-use BC\Laravel\Polyglot\Polyglot;
-
 if (! function_exists('polyglot')) {
     /**
-     * Get the Polyglot instance from the container.
+     * Resolve the Polyglot instance from the container.
+     *
+     * @return BC\Laravel\Polyglot\Polyglot
      */
-    function polyglot() : Polyglot
+    function polyglot()
     {
         return app('polyglot');
     }

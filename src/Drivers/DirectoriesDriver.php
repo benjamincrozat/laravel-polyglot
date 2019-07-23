@@ -2,41 +2,52 @@
 
 namespace BC\Laravel\Polyglot\Drivers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use BC\Laravel\Polyglot\Presenters\PresenterContract;
 
-class DirectoriesDriver extends BaseDriver implements DriverContract
+class DirectoriesDriver implements DriverContract
 {
-    public function __construct(PresenterContract $presenter)
-    {
-        parent::__construct($presenter);
+    /**
+     * @var Request
+     */
+    protected $request;
 
-        $this->routes();
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+
+        $this->secureRootRoute();
     }
 
-    public function prefix() : string
+    /**
+     * {@inheritdoc}
+     */
+    public function prefix()
     {
         return app()->getLocale();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setLocale()
     {
-        if (in_array($this->current(), config('polyglot.languages') ?? [])) {
-            app()->setLocale($this->current());
+        $language_directory = $this->request->segments()[0];
+        $valid_languages    = config('polyglot.languages');
+
+        if (in_array($language_directory, $valid_languages)) {
+            app()->setLocale($language_directory);
         }
     }
 
-    protected function routes()
+    /**
+     * This method registers the "/" route. Because this driver is based
+     * on directories, users should never be able to display "/".
+     */
+    protected function secureRootRoute()
     {
-        Route::get('/', function () {
-            return redirect(
-                $this->presenter()->switchTo(app()->getLocale())
-            );
-        });
-    }
-
-    protected function current()
-    {
-        return request()->segments()[0] ?? null;
+        Route::redirect('/', $this->request->fullUrlWithQuery([
+            'language' => app()->getLocale(),
+        ]));
     }
 }

@@ -1,6 +1,7 @@
 .DS_Store
-.idea
-.phpintel
-composer.lock
+/.idea
+/.phpintel
+/.phpunit.result.cache
+/composer.lock
+/vendor
 Thumbs.db
-vendor

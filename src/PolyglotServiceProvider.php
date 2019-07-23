@@ -34,7 +34,7 @@ class PolyglotServiceProvider extends ServiceProvider
             app()->bind(DriverContract::class, DomainsDriver::class);
         } elseif ('directories' === app('config')->get('polyglot.driver')) {
             app()->bind(DriverContract::class, DirectoriesDriver::class);
-        } elseif ('query_string' === app('config')->get('polyglot.driver')) {
+        } else {
             app()->bind(DriverContract::class, QueryStringDriver::class);
         }
 

@@ -33,7 +33,7 @@ class DomainsDriver extends BaseDriver implements DriverContract
     public function setLocale()
     {
         foreach (config('polyglot.domains') as $language => $domain) {
-            if ($this->request->getHost() === $domain && in_array($language, config('polyglot.languages'))) {
+            if ($this->request->getHost() === $domain && in_array($language, array_keys(config('polyglot.languages')))) {
                 app()->setLocale($language);
 
                 break;

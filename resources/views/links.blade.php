@@ -1,3 +1,3 @@
-@foreach (config('polyglot.languages') as $language)
-    <link rel="alternate" hreflang="{{ $language }}" href="{{ polyglot()->switchTo($language) }}">
+@foreach (config('polyglot.languages') as $code => $name)
+    <link rel="alternate" hreflang="{{ $code }}" href="{{ polyglot()->switchTo($code) }}">
 @endforeach

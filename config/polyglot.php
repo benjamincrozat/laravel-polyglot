@@ -12,7 +12,7 @@ return [
     | Supported: "query_string", directories", "domains"
     |
     */
-    'driver' => 'directories',
+    'driver' => 'query_string',
 
     /*
     |--------------------------------------------------------------------------

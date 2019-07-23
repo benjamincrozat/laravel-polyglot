@@ -68,6 +68,6 @@ class QueryStringDriver implements DriverContract
      */
     protected function isValidLanguage($language)
     {
-        return in_array($language, config('polyglot.languages'));
+        return in_array($language, array_keys(config('polyglot.languages')));
     }
 }

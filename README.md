@@ -11,7 +11,7 @@ Switch between multiple languages on your Laravel application, the easy way.
 ## Requirements
 
 - PHP 7.1+
-- Laravel 5.7+
+- Laravel 5.8+
 
 ## Installation
 
@@ -29,8 +29,10 @@ Once it's done, register Laravel Polyglot's service provider **before** `RouteSe
 
 ```php
 'providers' => [
+    ...
     BC\Laravel\Polyglot\PolyglotServiceProvider::class,
     App\Providers\RouteServiceProvider::class,
+    ...
 ]
 ```
 
@@ -45,6 +47,20 @@ protected function mapWebRoutes()
         ->group(base_path('routes/web.php'));
 }
 ```
+
+## Drivers
+
+### `query_string`
+
+https://example.com/foo?language=fr
+
+### `directories`
+
+https://example.com/fr/foo
+
+### `domains`
+
+https://fr.example.com/foo or https://exemple.com/foo
 
 ## Usage
 
@@ -67,6 +83,8 @@ You can publish the view files to customize them:
 ```bash
 php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvider" --tag=polyglot-views
 ```
+
+**Remember to use *named routes or actions* to generate the correct URLs. Don't use the `url()` helper.**
 
 ## ToDo
 

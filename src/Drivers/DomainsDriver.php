@@ -2,9 +2,10 @@
 
 namespace BC\Laravel\Polyglot\Drivers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class DomainsDriver extends BaseDriver implements DriverContract
+class DomainsDriver implements DriverContract
 {
     /**
      * @var Request
@@ -34,6 +35,10 @@ class DomainsDriver extends BaseDriver implements DriverContract
     {
         foreach (config('polyglot.domains') ?? [] as $language => $domain) {
             if ($this->request->getHost() === $domain && in_array($language, array_keys(config('polyglot.languages') ?? ['en']))) {
+                Str::contains(config('app.url'), 'https')
+                    ? config(['app.url' => "https://$domain"])
+                    : config(['app.url' => "http://$domain"]);
+
                 app()->setLocale($language);
 
                 break;

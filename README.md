@@ -13,17 +13,19 @@ Switch between multiple languages on your Laravel application, the easy way.
 - PHP 7.1+
 - Laravel 5.7+
 
-## Notes
-
-This package assume that you want every language to behave like a separate website. There is no guessing, Laravel Polyglot won't do automatic switch to the user's language. From an SEO point of view, that's the recommanded way, because Google and others will be able to visit and index every one of them (see [amazon.com](https://www.amazon.com), [apple.com](https://www.apple.com), [google.com](https://www.google.com), etc). More on the topic here: https://support.google.com/webmasters/answer/182192
-
 ## Installation
 
 ```php
 composer require benjamincrozat/laravel-polyglot
 ```
 
-Once it's done, register Laravel Polyglot **before** `RouteServiceProvider` in `config/app.php`:
+Publish the config file and edit it to your convenience:
+
+```bash
+php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvider" --tag=polyglot-config
+```
+
+Once it's done, register Laravel Polyglot's service provider **before** `RouteServiceProvider` in `config/app.php`:
 
 ```php
 'providers' => [
@@ -48,7 +50,7 @@ Now, take a look at `config/polyglot.php` and change it as you wish.
 
 ## Usage
 
-Once you configured Laravel Polyglot, there are views that are here to help on the SEO and the language switcher:
+Laravel Polyglot provides views to have something functional and SEO-friendly as quickly as possible.
 
 ```php
 <!DOCTYPE html>
@@ -62,7 +64,11 @@ Once you configured Laravel Polyglot, there are views that are here to help on t
 </html>
 ```
 
-Obviously, you are free to not use them and make your own!
+You can publish the view files to customize them:
+
+```bash
+php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvider" --tag=polyglot-views
+```
 
 ## ToDo
 

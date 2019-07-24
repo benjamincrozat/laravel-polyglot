@@ -4,9 +4,11 @@
 
 # Laravel Polyglot
 
-**Not ready for production!**
-
 Switch between multiple languages on your Laravel application, the easy way.
+
+## Notes
+
+- The tests suite can be found [here](https://github.com/benjamincrozat/laravel-polyglot-tests).
 
 ## Requirements
 
@@ -85,10 +87,6 @@ php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvid
 ```
 
 **Remember to use *named routes or actions* to generate the correct URLs. Don't use the `url()` helper.**
-
-## ToDo
-
-- [ ] Make [the tests](https://github.com/benjamincrozat/laravel-polyglot-tests) pass on Travis CI
 
 ## License
 

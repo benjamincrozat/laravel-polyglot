@@ -39,18 +39,16 @@ Then, go to `app/Providers/RouteServiceProvider.php` and add the `prefix()` meth
 ```php
 protected function mapWebRoutes()
 {
-    Route::prefix(polyglot()->prefix())
+    Route::prefix(\Polyglot::prefix())
         ->middleware('web')
         ->namespace($this->namespace)
         ->group(base_path('routes/web.php'));
 }
 ```
 
-Now, take a look at `config/polyglot.php` and change it as you wish.
-
 ## Usage
 
-Laravel Polyglot provides views to have something functional and SEO-friendly as quickly as possible.
+Laravel Polyglot provides views to help you getting started as quickly as possible.
 
 ```php
 <!DOCTYPE html>

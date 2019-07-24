@@ -15,7 +15,7 @@ return [
     | - domains: https://fr.example.com/foo or https://exemple.com/foo
     |
     */
-    'driver' => 'query_string',
+    'driver' => env('POLYGLOT_DRIVER', 'query_string'),
 
     /*
     |--------------------------------------------------------------------------

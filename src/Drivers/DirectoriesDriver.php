@@ -33,7 +33,7 @@ class DirectoriesDriver implements DriverContract
     public function setLocale()
     {
         $language_directory = $this->request->segments()[0] ?? null;
-        $valid_languages    = array_keys(config('polyglot.languages') ?? ['en']);
+        $valid_languages    = array_keys(config('polyglot.languages', ['en']));
 
         if (in_array($language_directory, $valid_languages)) {
             app()->setLocale($language_directory);

@@ -34,7 +34,7 @@ class DomainsDriver implements DriverContract
     public function setLocale()
     {
         foreach (config('polyglot.domains') ?? [] as $language => $domain) {
-            if ($this->request->getHost() === $domain && in_array($language, array_keys(config('polyglot.languages') ?? ['en']))) {
+            if ($this->request->getHost() === $domain && in_array($language, array_keys(config('polyglot.languages', ['en'])))) {
                 Str::contains(config('app.url'), 'https')
                     ? config(['app.url' => "https://$domain"])
                     : config(['app.url' => "http://$domain"]);

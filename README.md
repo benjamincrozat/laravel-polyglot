@@ -8,7 +8,7 @@ Switch between multiple languages on your Laravel application, the easy way.
 
 ## Notes
 
-- The tests suite can be found [here](https://github.com/benjamincrozat/laravel-polyglot-tests).
+- The tests suite can be found [here](https://github.com/benjamincrozat/laravel-polyglot-tests)
 
 ## Requirements
 
@@ -53,6 +53,9 @@ protected function mapWebRoutes()
 ## Drivers
 
 ### `query_string`
+
+- The user is automatically redirected to his/her language (this behavior can be disabled in the config);
+- If the user choose another language, his/her preference is saved in a cookie.
 
 https://example.com/foo?language=fr
 

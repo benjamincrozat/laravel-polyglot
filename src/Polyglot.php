@@ -17,7 +17,7 @@ class Polyglot
     }
 
     /**
-     * Redirect calls to the driver because this class acts as a proxy.
+     * Redirect calls to the driver since this class acts as a proxy.
      *
      * @param mixed $name
      * @param mixed $arguments
@@ -31,10 +31,7 @@ class Polyglot
         }
     }
 
-    /**
-     * @return DriverContract
-     */
-    public function driver()
+    public function driver() : DriverContract
     {
         return $this->driver;
     }

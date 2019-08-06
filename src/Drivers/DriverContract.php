@@ -5,11 +5,17 @@ namespace BC\Laravel\Polyglot\Drivers;
 interface DriverContract
 {
     /**
-     * @return string
+     * Return a URL prefix if the driver needs one.
      */
-    public function prefix();
+    public function prefix() : string;
 
-    public function setLocale();
+    /**
+     * Set the locale in a way that depends on the chosen driver.
+     */
+    public function setLocale() : void;
 
-    public function switchTo($language);
+    /**
+     * Generate an URL to a given language.
+     */
+    public function switchTo(string $language) : string;
 }

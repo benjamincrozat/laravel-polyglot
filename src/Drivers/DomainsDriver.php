@@ -23,7 +23,7 @@ class DomainsDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function prefix()
+    public function prefix() : string
     {
         return '';
     }
@@ -31,7 +31,7 @@ class DomainsDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function setLocale()
+    public function setLocale() : void
     {
         foreach (config('polyglot.domains') ?? [] as $language => $domain) {
             if ($this->request->getHost() === $domain && in_array($language, array_keys(config('polyglot.languages', ['en'])))) {
@@ -49,7 +49,7 @@ class DomainsDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function switchTo($language)
+    public function switchTo(string $language) : string
     {
         return str_replace($this->request->getHost(), config("polyglot.domains.$language"), $this->request->fullUrl());
     }

@@ -20,7 +20,7 @@ class QueryStringDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function prefix()
+    public function prefix() : string
     {
         return '';
     }
@@ -28,7 +28,7 @@ class QueryStringDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function setLocale()
+    public function setLocale() : void
     {
         app()->setLocale(
             $this->preferredLocale()
@@ -38,15 +38,16 @@ class QueryStringDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function switchTo($language)
+    public function switchTo(string $language) : string
     {
         return $this->request->fullUrlWithQuery(compact('language'));
     }
 
     /**
-     * @return string
+     * Infer visitor's preferred language based on query
+     * string, existing cookie or browser preference.
      */
-    protected function preferredLocale()
+    protected function preferredLocale() : string
     {
         if ($this->request->language && $this->isValidLanguage($this->request->language)) {
             Cookie::queue('language', $this->request->language, 60 * 24 * 365);
@@ -62,11 +63,9 @@ class QueryStringDriver implements DriverContract
     }
 
     /**
-     * @param string $language
-     *
-     * @return bool
+     * Check if a given language is authorized in the config file.
      */
-    protected function isValidLanguage($language)
+    protected function isValidLanguage(string $language) : bool
     {
         return in_array($language, array_keys(config('polyglot.languages', ['en'])));
     }

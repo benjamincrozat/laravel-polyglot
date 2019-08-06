@@ -11,7 +11,7 @@ use BC\Laravel\Polyglot\Drivers\QueryStringDriver;
 
 class PolyglotServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot() : void
     {
         $this->publishes([
             __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
@@ -28,7 +28,7 @@ class PolyglotServiceProvider extends ServiceProvider
         Carbon::setUtf8(true);
     }
 
-    public function register()
+    public function register() : void
     {
         if ('domains' === app('config')->get('polyglot.driver')) {
             app()->bind(DriverContract::class, DomainsDriver::class);

@@ -10,9 +10,9 @@ return [
     | defined by a driver. Choose the one that fits your needs.
     |
     | Supported:
-    | - query_string: https://example.com/foo?language=fr
-    | - directories: https://example.com/fr/foo
-    | - domains: https://fr.example.com/foo or https://exemple.com/foo
+    | - query_string: https://foo.com?language={language}
+    | - directories: https://foo.com/{language}
+    | - domains: https://{language}.foo.com or https://foo.com and https://bar.com
     |
     */
     'driver' => env('POLYGLOT_DRIVER', 'query_string'),
@@ -33,7 +33,7 @@ return [
     | Supported Languages
     |--------------------------------------------------------------------------
     |
-    | This parameter prevents users to display unsupported languages.
+    | This list of languages prevents users to display unsupported languages.
     |
     */
     'languages' => [

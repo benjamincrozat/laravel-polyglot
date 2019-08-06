@@ -13,7 +13,7 @@ Switch between multiple languages on your Laravel application, the easy way.
 ## Requirements
 
 - PHP 7.1+
-- Laravel 5.8+
+- Laravel 5.8+ (it should run fine on previous versions too)
 
 ## Installation
 
@@ -21,7 +21,7 @@ Switch between multiple languages on your Laravel application, the easy way.
 composer require benjamincrozat/laravel-polyglot
 ```
 
-Publish the config file and edit it to your convenience:
+Publish the config file and edit it to your convenience (see the [available drivers](#drivers)):
 
 ```bash
 php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvider" --tag=polyglot-config
@@ -50,6 +50,30 @@ protected function mapWebRoutes()
 }
 ```
 
+## Show a language switcher
+
+Laravel Polyglot provides a basic language switcher that you can include in your Blade templates.
+
+```php
+@include('polyglot::switcher')
+```
+
+## Search Engines Optimizations
+
+https://support.google.com/webmasters/answer/189077
+
+```php
+<head>
+    @include('polyglot::links')
+</head>
+```
+
+## Customize the views
+
+```bash
+php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvider" --tag=polyglot-views
+```
+
 ## Drivers
 
 ### `query_string`
@@ -57,39 +81,15 @@ protected function mapWebRoutes()
 - The user is automatically redirected to his / her language (this behavior can be disabled in the config);
 - If the user choose another language, his / her preference is saved in a cookie.
 
-https://example.com/foo?language=fr
+https://foo.com?language={language}
 
 ### `directories`
 
-https://example.com/{language}
+https://foo.com/{language}
 
 ### `domains`
 
-https://fr.foo.com or https://bar.com
-
-## Usage
-
-Laravel Polyglot provides views to help you getting started as quickly as possible.
-
-```php
-<!DOCTYPE html>
-<html>
-    <head>
-        @include('polyglot::links')
-    </head>
-    <body>
-        @include('polyglot::switcher')
-    </body>
-</html>
-```
-
-You can publish the view files to customize them:
-
-```bash
-php artisan vendor:publish --provider="BC\Laravel\Polyglot\PolyglotServiceProvider" --tag=polyglot-views
-```
-
-**Remember to use *named routes or actions* to generate the correct URLs. Don't use the `url()` helper.**
+https://{language}.foo.com or https://foo.com and https://bar.com
 
 ## License
 

@@ -54,18 +54,18 @@ protected function mapWebRoutes()
 
 ### `query_string`
 
-- The user is automatically redirected to his/her language (this behavior can be disabled in the config);
-- If the user choose another language, his/her preference is saved in a cookie.
+- The user is automatically redirected to his / her language (this behavior can be disabled in the config);
+- If the user choose another language, his / her preference is saved in a cookie.
 
 https://example.com/foo?language=fr
 
 ### `directories`
 
-https://example.com/fr/foo
+https://example.com/{language}
 
 ### `domains`
 
-https://fr.example.com/foo or https://exemple.com/foo
+https://fr.foo.com or https://bar.com
 
 ## Usage
 

@@ -12,9 +12,6 @@ class DomainsDriver implements DriverContract
      */
     protected $request;
 
-    /**
-     * @param Request $request
-     */
     public function __construct(Request $request)
     {
         $this->request = $request;

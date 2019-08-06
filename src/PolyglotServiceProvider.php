@@ -23,8 +23,8 @@ class PolyglotServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => resource_path('views/vendor/polyglot'),
         ], 'polyglot-views');
 
-        polyglot()->setLocale();
-        Carbon::setLocale(app()->getLocale());
+        $this->app['polyglot']->setLocale();
+        Carbon::setLocale($this->app->getLocale());
         Carbon::setUtf8(true);
     }
 
@@ -32,17 +32,17 @@ class PolyglotServiceProvider extends ServiceProvider
     {
         switch (config('polyglot.driver')) {
             case 'domains':
-                app()->bind(DriverContract::class, DomainsDriver::class);
+                $this->app->bind(DriverContract::class, DomainsDriver::class);
                 break;
 
             case 'directories':
-                app()->bind(DriverContract::class, DirectoriesDriver::class);
+                $this->app->bind(DriverContract::class, DirectoriesDriver::class);
                 break;
 
             default:
-                app()->bind(DriverContract::class, QueryStringDriver::class);
+                $this->app->bind(DriverContract::class, QueryStringDriver::class);
         }
 
-        app()->bind('polyglot', Polyglot::class);
+        $this->app->bind('polyglot', Polyglot::class);
     }
 }

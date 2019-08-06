@@ -33,7 +33,8 @@ return [
     | Supported Languages
     |--------------------------------------------------------------------------
     |
-    | This list of languages prevents users to display unsupported languages.
+    | This list helps you generate the lang switcher and
+    | prevents users to display unsupported languages.
     |
     */
     'languages' => [

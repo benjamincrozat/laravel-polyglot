@@ -3,6 +3,7 @@
 namespace BC\Laravel\Polyglot\Drivers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cookie;
 
 class QueryStringDriver implements DriverContract
@@ -28,11 +29,14 @@ class QueryStringDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function setLocale() : void
+    public function setLocale(?string $locale = null) : void
     {
         app()->setLocale(
-            $this->preferredLocale()
+            $this->preferredLocale($locale)
         );
+
+        Carbon::setLocale(app()->getLocale());
+        Carbon::setUtf8(true);
     }
 
     /**
@@ -47,12 +51,12 @@ class QueryStringDriver implements DriverContract
      * Infer visitor's preferred language based on query
      * string, existing cookie or browser preference.
      */
-    protected function preferredLocale() : string
+    protected function preferredLocale(?string $locale = null) : string
     {
-        if ($this->request->language && $this->isValidLanguage($this->request->language)) {
-            Cookie::queue('language', $this->request->language, 60 * 24 * 365);
+        if ($this->isValidLanguage($language = $locale ?? $this->request->language)) {
+            Cookie::queue('language', $language, 60 * 24 * 365);
 
-            return $this->request->language;
+            return $language;
         }
 
         if (! empty($this->request->cookie('language')) && $this->isValidLanguage($language = $this->request->cookie('language'))) {
@@ -65,7 +69,7 @@ class QueryStringDriver implements DriverContract
     /**
      * Check if a given language is authorized in the config file.
      */
-    protected function isValidLanguage(string $language) : bool
+    protected function isValidLanguage(?string $language) : bool
     {
         return in_array($language, array_keys(config('polyglot.languages', ['en'])));
     }

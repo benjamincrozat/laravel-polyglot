@@ -4,6 +4,7 @@ namespace BC\Laravel\Polyglot\Drivers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class DomainsDriver implements DriverContract
 {
@@ -37,6 +38,9 @@ class DomainsDriver implements DriverContract
                     : config(['app.url' => "http://$domain"]);
 
                 app()->setLocale($language);
+
+                Carbon::setLocale(app()->getLocale());
+                Carbon::setUtf8(true);
 
                 break;
             }

@@ -3,6 +3,7 @@
 namespace BC\Laravel\Polyglot\Drivers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 
 class DirectoriesDriver implements DriverContract
@@ -38,6 +39,9 @@ class DirectoriesDriver implements DriverContract
         if (in_array($language_directory, $valid_languages)) {
             app()->setLocale($language_directory);
         }
+
+        Carbon::setLocale(app()->getLocale());
+        Carbon::setUtf8(true);
     }
 
     /**

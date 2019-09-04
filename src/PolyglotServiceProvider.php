@@ -2,7 +2,6 @@
 
 namespace BC\Laravel\Polyglot;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 use BC\Laravel\Polyglot\Drivers\DomainsDriver;
 use BC\Laravel\Polyglot\Drivers\DriverContract;
@@ -22,10 +21,6 @@ class PolyglotServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/polyglot'),
         ], 'polyglot-views');
-
-        $this->app['polyglot']->setLocale();
-        Carbon::setLocale($this->app->getLocale());
-        Carbon::setUtf8(true);
     }
 
     public function register() : void

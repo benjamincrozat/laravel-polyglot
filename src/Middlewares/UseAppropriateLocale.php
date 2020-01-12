@@ -21,7 +21,7 @@ class UseAppropriateLocale
         try {
             Polyglot::setLocale();
         } catch (\Exception $e) {
-            abort(404);
+            return redirect('/en');
         }
 
         return $next($request);

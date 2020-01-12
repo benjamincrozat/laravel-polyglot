@@ -25,7 +25,7 @@ class DirectoriesDriver implements DriverContract
      */
     public function prefix() : string
     {
-        return app()->getLocale();
+        return $this->request->segments()[0];
     }
 
     /**
@@ -33,13 +33,14 @@ class DirectoriesDriver implements DriverContract
      */
     public function setLocale() : void
     {
-        $language_directory = $this->request->segments()[0] ?? null;
+        $language_directory = $this->prefix();
         $valid_languages    = array_keys(config('polyglot.languages', ['en']));
 
-        if (in_array($language_directory, $valid_languages)) {
-            app()->setLocale($language_directory);
+        if (! in_array($language_directory, $valid_languages)) {
+            throw new \Exception;
         }
 
+        app()->setLocale($language_directory);
         Carbon::setLocale(app()->getLocale());
         Carbon::setUtf8(true);
     }

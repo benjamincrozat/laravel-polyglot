@@ -18,7 +18,11 @@ class UseAppropriateLocale
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        Polyglot::setLocale();
+        try {
+            Polyglot::setLocale();
+        } catch (\Exception $e) {
+            abort(404);
+        }
 
         return $next($request);
     }

@@ -23,9 +23,9 @@ class DirectoriesDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function prefix() : string
+    public function prefix() : ?string
     {
-        return $this->request->segments()[0];
+        return $this->request->segments()[0] ?? null;
     }
 
     /**

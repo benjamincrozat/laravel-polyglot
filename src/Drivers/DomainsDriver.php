@@ -21,7 +21,7 @@ class DomainsDriver implements DriverContract
     /**
      * {@inheritdoc}
      */
-    public function prefix() : string
+    public function prefix() : ?string
     {
         return '';
     }

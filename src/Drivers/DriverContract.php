@@ -7,7 +7,7 @@ interface DriverContract
     /**
      * Return a URL prefix if the driver needs one.
      */
-    public function prefix() : string;
+    public function prefix() : ?string;
 
     /**
      * Set the locale in a way that depends on the chosen driver.

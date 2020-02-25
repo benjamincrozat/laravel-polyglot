@@ -40,7 +40,10 @@
         "laravel": {
             "aliases": {
                 "Polyglot": "BC\\Laravel\\Polyglot\\Facades\\Polyglot"
-            }
+            },
+            "providers": [
+                "BC\\Laravel\\Polyglot\\PolyglotServiceProvider"
+            ]
         }
     },
     "config": {

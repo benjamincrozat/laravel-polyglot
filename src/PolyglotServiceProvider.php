@@ -4,7 +4,6 @@ namespace BC\Laravel\Polyglot;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use BC\Laravel\Polyglot\Drivers\DriverContract;
 use BC\Laravel\Polyglot\Controllers\RootController;
 
 class PolyglotServiceProvider extends ServiceProvider
@@ -28,7 +27,6 @@ class PolyglotServiceProvider extends ServiceProvider
 
     public function register() : void
     {
-        $this->app->bind(DriverContract::class, config('polyglot.driver'));
         $this->app->bind('polyglot', Polyglot::class);
     }
 

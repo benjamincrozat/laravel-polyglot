@@ -2,13 +2,13 @@
 
 namespace BC\Laravel\Polyglot;
 
-use BC\Laravel\Polyglot\Drivers\DriverContract;
+use BC\Laravel\Polyglot\Drivers\DirectoriesDriver;
 
 class Polyglot
 {
-    public DriverContract $driver;
+    public DirectoriesDriver $driver;
 
-    public function __construct(DriverContract $driver)
+    public function __construct(DirectoriesDriver $driver)
     {
         $this->driver = $driver;
     }
@@ -20,7 +20,7 @@ class Polyglot
         }
     }
 
-    public function driver() : DriverContract
+    public function driver() : DirectoriesDriver
     {
         return $this->driver;
     }

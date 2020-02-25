@@ -3,9 +3,8 @@
 namespace BC\Laravel\Polyglot\Middlewares;
 
 use Closure;
-use BC\Laravel\Polyglot\Facades\Polyglot;
 
-class UseAppropriateLocale
+class Localized
 {
     /**
      * Handle an incoming request.
@@ -18,11 +17,7 @@ class UseAppropriateLocale
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        try {
-            Polyglot::setLocale();
-        } catch (\Exception $e) {
-            return redirect('/en');
-        }
+        app()->setLocale($request->route()->getPrefix());
 
         return $next($request);
     }

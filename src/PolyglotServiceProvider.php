@@ -4,7 +4,6 @@ namespace BC\Laravel\Polyglot;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use BC\Laravel\Polyglot\Controllers\RootController;
 
 class PolyglotServiceProvider extends ServiceProvider
 {
@@ -27,6 +26,6 @@ class PolyglotServiceProvider extends ServiceProvider
     protected function registerRoutes() : void
     {
         // We use a controller to not break routes caching.
-        Route::get('/', RootController::class);
+        Route::redirect('/', config('app.locale'));
     }
 }

@@ -17,12 +17,6 @@ class PolyglotServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/polyglot.php' => config_path('polyglot.php'),
         ], 'config');
-
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'polyglot');
-
-        $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/polyglot'),
-        ], 'views');
     }
 
     public function register() : void

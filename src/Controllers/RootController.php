@@ -9,12 +9,6 @@ class RootController
 {
     public function __invoke(Request $request) : RedirectResponse
     {
-        $preferredLanguage = explode('_', $request->getPreferredLanguage())[0];
-
-        return redirect()->to(
-            -1 === array_key_exists($preferredLanguage, config('polyglot.languages'))
-                ? config('app.fallback_locale')
-                : $preferredLanguage
-        );
+        return redirect()->to(config('app.fallback_locale'));
     }
 }
